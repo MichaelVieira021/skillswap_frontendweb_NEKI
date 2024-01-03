@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'fontSkillSwap';
+    src: url('../../assets/fonts/DevilCandle.otf');
+  }
+
+#backgroundLogin {
+    background-image: url('../../assets/img/background.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#containerFormularioLoginCompleto{
+    width: 45%;
+    height: 55%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.822);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #010216;
+    border: 1px solid white;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.822);
+    padding: 9px;
+}
+
+#containerImagemFormularioLogin{
+    width: 60%;
+    min-width: 60%;
+    height: 100%;
+}
+
+#containerInputs{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+#containerImagemFormularioLogin img{
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    border-radius: 10px 0 0 10px;
+    object-fit: cover;
+}
+
+#containerFormularioLogin{
+    width: 40%;
+    height: 100%;
+    color: rgb(255, 255, 255);
+    opacity: 0.9;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#containerFormularioLogin input{
+    border: none;
+    outline: none;
+    background-color: #261038;
+    padding-left: 28px;
+    color: rgb(255, 255, 255);
+    height: 30px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    width: calc(100% - 28px)
+}
+
+#containerFormularioLogin input:hover{
+    background-color: #381010;
+}
+
+#containerFormularioLogin input::placeholder {
+    color: rgba(255, 255, 255, 0.301);
+}
+
+#containerFormularioLogin button{
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 40px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 6px rgba(37, 1, 122, 0.822);
+    margin-bottom: 7px;
+    margin-top: 20px;
+}
+
+#containerFormularioLogin button:hover{
+    background-color: rgb(203, 255, 255);
+}
+
+#containerFormularioLogin p{
+    margin-bottom: 15px;
+}
+
+#tituloLogin{
+    font-size: 34px;
+    font-family: 'fontSkillSwap';
+    font-weight: 600;
+}
+
+#gravadorDeSenha{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 6.5rem;
+}
+
+@media (max-width: 1334px){
+    #containerImagemFormularioLogin{
+        display: none;
+    }
+
+    #containerFormularioLoginCompleto{
+        width: 20rem;
+        min-width: 20rem;
+        height: 20rem;
+    }
+
+    #containerFormularioLogin{
+        width: 100%;
+    }
+
+    #containerInputs{
+        width: 100%;
+        height: 65%;
+        margin-top: 15%;
+    }
+
+    #gravardorDeSenha{
+        margin-right: 10rem
+    }
+}
+
+@media (max-height: 640px){
+    #containerFormularioLoginCompleto{
+        height: 20rem;
+    }
+}
+
