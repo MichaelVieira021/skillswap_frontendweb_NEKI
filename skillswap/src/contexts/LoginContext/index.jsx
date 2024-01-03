@@ -22,7 +22,7 @@ export const LoginProvider = ({children}) => {
                 localStorage.removeItem('gravarSenha')
             }
 
-            navi('/')
+            navi('/home')
         }).catch((error) => {
             console.log(error.response.data.mensagem)
         })

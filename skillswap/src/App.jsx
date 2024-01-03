@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom"
-import { Login } from "./pages/Login"
 import { LoginProvider } from "./contexts/LoginContext"
+import AppRouter from "./routes"
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <BrowserRouter>
         <LoginProvider>
-          <Login/>
+          <AppRouter/>
         </LoginProvider>
       </BrowserRouter>
     </>

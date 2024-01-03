@@ -3,7 +3,9 @@ import { useContext, useEffect, useState } from 'react'
 import { GiCrownedSkull } from "react-icons/gi";
 import { InputSenha } from '../../components/InputSenha';
 import skillswaploginIMG from '../../assets/img/skillswaplogincadastro.jpeg'
+import manchaSangueIMG from '../../assets/img/blood.png'
 import { LoginContext } from '../../contexts/LoginContext';
+import { Link } from 'react-router-dom';
 
 export const Login = () => {
     const { verificarLogin} = useContext(LoginContext);
@@ -71,9 +73,9 @@ export const Login = () => {
                         </div>
 
                     </div>
-                    <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+                    <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: "100%"}}>
                     <button onClick={()=> verificarLogin(email, senha, gravarSenha)}>ENTRAR</button>
-                    <p>Não possui conta? Cadastre-se</p>
+                    <p>Não possui conta?  <Link to={"/Cadastro"}> Cadastre-se</Link></p>
 
                     </div>
 

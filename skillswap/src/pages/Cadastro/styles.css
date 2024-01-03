@@ -3,7 +3,7 @@
     src: url('../../assets/fonts/DevilCandle.otf');
   }
 
-#backgroundLogin {
+#backgroundCadastro {
     background-image: url('../../assets/img/background.gif');
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,8 +14,9 @@
     align-items: center;
 }
 
-#containerFormularioLoginCompleto{
+#containerFormularioCadastroCompleto{
     width: 45%;
+
     height: 55%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.822);
     border-radius: 10px;
@@ -29,40 +30,50 @@
     padding: 9px;
 }
 
-#containerImagemFormularioLogin{
+#containerImagemFormularioCadastro{
     width: 60%;
     min-width: 60%;
+    /* min-width: 33rem; */
     height: 100%;
+    /* background-size: contain; */
+    /* background-size: contain; */
 }
 
 #containerInputs{
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 0;
 }
 
-#containerImagemFormularioLogin img{
+
+
+#containerImagemFormularioCadastro img{
     width: 100%;
     height: 100%;
+    /* background-size: contain; */
     opacity: 0.9;
     border-radius: 10px 0 0 10px;
     object-fit: cover;
 }
 
-#containerFormularioLogin{
+#containerFormularioCadastro{
     width: 40%;
     height: 100%;
+    /* padding: 30px; */
     color: rgb(255, 255, 255);
     opacity: 0.9;
+    /* background-image: url('https://th.bing.com/th/id/OIG.p1FncihOQjGUsvYBK5rX?pid=ImgGn'); */
     background-size: contain;
+    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.822); */
+    /* border-radius: 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* padding-top: ; */
     justify-content: center;
 }
 
-#containerFormularioLogin input{
+#containerFormularioCadastro input{
     border: none;
     outline: none;
     background-color: #261038;
@@ -71,62 +82,65 @@
     height: 30px;
     font-size: 18px;
     margin-bottom: 15px;
+    /* width: 92%; */
     width: calc(100% - 28px)
+    /* border-radius: 6px; */
+    /* box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.822); */
+
 }
 
-#containerFormularioLogin input:hover{
+#containerFormularioCadastro input:hover{
+    /* border: 1px solid white; */
+    /* background-color: #191038; */
     background-color: #381010;
 }
 
-#containerFormularioLogin input::placeholder {
+#containerFormularioCadastro input::placeholder {
     color: rgba(255, 255, 255, 0.301);
+    /* font-weight: 600; */
+    /* padding: 6px; */
 }
 
-#containerFormularioLogin button{
+#containerFormularioCadastro button{
     border: none;
     outline: none;
+    /* width: 70%; */
     width: 180px;
     height: 40px;
     border-radius: 6px;
     box-shadow: 3px 3px 6px rgba(37, 1, 122, 0.822);
     margin-bottom: 12px;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 1rem;
 }
 
-#containerFormularioLogin button:hover{
+#containerFormularioCadastro button:hover{
     background-color: rgb(203, 255, 255);
 }
 
-#containerFormularioLogin p{
-    margin-bottom: 15px;
+#containerFormularioCadastro p{
+    margin-bottom: 25px;
 }
 
-#tituloLogin{
+#tituloCadastro{
+    /* margin-top: 80px; */
     font-size: 34px;
     font-family: 'fontSkillSwap';
     font-weight: 600;
 }
 
-#gravadorDeSenha{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-right: 6.5rem;
-}
-
 @media (max-width: 1334px){
-    #containerImagemFormularioLogin{
+    #containerImagemFormularioCadastro{
         display: none;
     }
 
-    #containerFormularioLoginCompleto{
+    #containerFormularioCadastroCompleto{
         width: 20rem;
         min-width: 20rem;
         height: 22rem;
     }
 
-    #containerFormularioLogin{
+    #containerFormularioCadastro{
         width: 100%;
     }
 
@@ -135,14 +149,10 @@
         height: 65%;
         margin-top: 15%;
     }
-
-    #gravadorDeSenha{
-        margin-right: 10rem
-    }
 }
 
 @media (max-height: 640px){
-    #containerFormularioLoginCompleto{
+    #containerFormularioCadastroCompleto{
         height: 22rem;
     }
 }
