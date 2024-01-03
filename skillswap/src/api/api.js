@@ -12,12 +12,40 @@ export const configurarToken = (token) => {
 
 
 //USER
-export function verificarUsuario(email, senha){
-    return api.post("/usuarios/login", {email, senha})
+export function verificarUsuario(login, senha){
+    return api.post("/usuarios/login", {login, senha})
 };
 
-export function cadastrarUsuario(nomeUsuario, email, senha){
-    return api.post("/usuarios", {nomeUsuario, email, senha})
+export function cadastrarNovoUsuario(login, senha){
+    return api.post("/usuarios", {login, senha})
+};
+
+
+//SKILLS USER
+export function skillsUser(userId){
+    return api.get(`/usuarios/skillsUser?userId=${userId}`)
+};
+
+export function levelUp(id){
+    return api.patch(`/usuarios/levelUp/skill/${id}`)
+};
+
+export function levelDown(id){
+    return api.patch(`/usuarios/levelDown/skill/${id}`)
+};
+
+export function delUserSkill(id){
+    return api.delete(`/usuarios/deletar/skill/${id}`)
+};
+
+export function adicionarSkillUser(idUser, idSkill, level){
+    return api.post("/usuarios/adicionar/skill", null, {
+        params: {
+            idUser: idUser,
+            idSkill: idSkill,
+            level: level
+        }
+    });
 };
 
 

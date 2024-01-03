@@ -1,14 +1,16 @@
 import { Link, json, useNavigate } from 'react-router-dom'
 import './styles.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { InputSenha } from '../../components/InputSenha';
 import { GiCrownedSkull } from "react-icons/gi";
-import { cadastrarUsuario } from '../../api/api';
 import { FaBookSkull } from "react-icons/fa6";
+import { LoginContext } from '../../contexts/LoginContext';
+
 
 
 export const Cadastro = () => {
-    const [email, setEmail] = useState();
+    const {cadastrarUsuario} = useContext(LoginContext)
+    const [login, setLogin] = useState();
     const [senha, setSenha] = useState();
     const [confirmarSenha, setConfirmarSenha] = useState();
     // const navigate = useNavigate()
@@ -25,19 +27,6 @@ export const Cadastro = () => {
                 <div id='containerFormularioCadastro'>
                     <div id='containerInputs'>
                         <p id='tituloCadastro'>REGISTER</p>
-                        {/* <div style={{display: 'flex',flexDirection: 'column', position: 'relative', width: "85%", marginTop: "5px"}}>
-                            <FaBookSkull 
-                                style={{ 
-                                    width: '40px', 
-                                    position: 'absolute', 
-                                    left: '-6px', 
-                                    top: '14%', 
-                                    color: 'gray',
-                                    fontSize: 18
-                                }}
-                            />
-                            <input type="text" placeholder='E-mail' onChange={(e) => {setEmail(e.target.value)}} value={email}/>
-                        </div> */}
 
                         <div style={{display: 'flex',flexDirection: 'column', position: 'relative', width: "85%"}}>
                             <GiCrownedSkull 
@@ -50,7 +39,7 @@ export const Cadastro = () => {
                                     fontSize: 25
                                 }}
                             />
-                            <input type="text" placeholder='Usuario' onChange={(e) => {setEmail(e.target.value)}} value={email}/>
+                            <input type="text" placeholder='Usuario' onChange={(e) => {setLogin(e.target.value)}} value={login}/>
                         </div>
 
                         <InputSenha setSenha={setSenha} senha={senha} placeholder="Senha"/>
@@ -60,7 +49,7 @@ export const Cadastro = () => {
 
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: "100%"}}>
-                    <button onClick={()=>cadastrarUsuario("michael23", email, senha)}>CADASTRAR</button>
+                    <button onClick={()=>cadastrarUsuario(login, senha)}>CADASTRAR</button>
                     <p>Já possui conta? <Link to={"/login"}> Logar</Link></p>
 
                     </div>

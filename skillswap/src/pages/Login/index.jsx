@@ -3,21 +3,20 @@ import { useContext, useEffect, useState } from 'react'
 import { GiCrownedSkull } from "react-icons/gi";
 import { InputSenha } from '../../components/InputSenha';
 import skillswaploginIMG from '../../assets/img/skillswaplogincadastro.jpeg'
-import manchaSangueIMG from '../../assets/img/blood.png'
 import { LoginContext } from '../../contexts/LoginContext';
 import { Link } from 'react-router-dom';
 
 export const Login = () => {
     const { verificarLogin} = useContext(LoginContext);
-    const [email, setEmail] = useState('');
+    const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
     const [gravarSenha, setGravarSenha] = useState(false);
 
     useEffect(()=> {
         if(localStorage.getItem('gravarSenha')){
             var salvos = JSON.parse(localStorage.getItem('gravarSenha'))
-            console.log(salvos.senha)
-            setEmail(salvos.login)
+            // console.log(salvos.senha)
+            setLogin(salvos.login)
             setSenha(salvos.senha)
             setGravarSenha(true)
         }
@@ -56,7 +55,7 @@ export const Login = () => {
                                     fontSize: 25
                                 }}
                             />
-                            <input type="text" placeholder='Login' onChange={(e) => setEmail(e.target.value)} value={email}/>
+                            <input type="text" placeholder='Login' onChange={(e) => setLogin(e.target.value)} value={login}/>
                         </div>
 
                         <InputSenha setSenha={setSenha} senha={senha} placeholder="Senha"/>
@@ -74,9 +73,8 @@ export const Login = () => {
 
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: "100%"}}>
-                    <button onClick={()=> verificarLogin(email, senha, gravarSenha)}>ENTRAR</button>
+                    <button onClick={()=> verificarLogin(login, senha, gravarSenha)}>ENTRAR</button>
                     <p>Não possui conta?  <Link to={"/Cadastro"}> Cadastre-se</Link></p>
-
                     </div>
 
                 </div>
