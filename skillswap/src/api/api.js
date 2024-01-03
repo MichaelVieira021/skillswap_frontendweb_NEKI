@@ -9,6 +9,14 @@ export const configurarToken = (token) => {
     api.defaults.headers.common['Authorization'] = token;
 };
 
+export function verificarToken(token){
+    return api.post("/usuarios/validar/token", null, {
+        params: {
+            token: token
+        }
+    });
+};
+
 
 
 //USER

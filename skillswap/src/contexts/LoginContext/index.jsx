@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createContext } from 'react';
-import {cadastrarNovoUsuario, configurarToken, verificarUsuario } from '../../api/api';
+import {cadastrarNovoUsuario, configurarToken, verificarToken, verificarUsuario } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -8,6 +8,33 @@ export const LoginContext = createContext({})
 
 export const LoginProvider = ({children}) => {
     const navi = useNavigate()
+
+    useEffect(() => {
+        const checkToken = () => {
+            if(localStorage.getItem('token') && localStorage.getItem('user')){
+                const storedToken = localStorage.getItem('token');
+
+                verificarToken(storedToken).then((response)=>{
+                    if(response.data === "Token válido"){
+                        configurarToken(storedToken);
+                        navi('/home');
+                    }else{
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        navi('/login');
+                    }
+                }).catch((error)=>{
+                    console.log(error.response.data.mensagem)
+                })
+
+            }else{
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                navi('/login');
+            }
+        };
+        checkToken();
+    }, []);
     
     function verificarLogin(login, senha, gravarSenha) {
         verificarUsuario(login, senha).then((response) => {
