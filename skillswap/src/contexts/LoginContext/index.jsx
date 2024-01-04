@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { createContext } from 'react';
 import {cadastrarNovoUsuario, configurarToken, verificarToken, verificarUsuario } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 
 export const LoginContext = createContext({})
 
 export const LoginProvider = ({children}) => {
+    const {enqueueSnackbar} = useSnackbar()
     const navi = useNavigate()
 
     useEffect(() => {
@@ -48,9 +50,10 @@ export const LoginProvider = ({children}) => {
             }else if (!gravarSenha){
                 localStorage.removeItem('gravarSenha')
             }
-
+            enqueueSnackbar("Login efetuado com sucesso!",{variant:"success", anchorOrigin:{vertical:'top',horizontal:'right'}})
             navi('/home')
         }).catch((error) => {
+            enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
             console.log(error.response.data.mensagem)
         })
     }
@@ -58,9 +61,10 @@ export const LoginProvider = ({children}) => {
 
     function cadastrarUsuario(login, senha){
         cadastrarNovoUsuario(login, senha).then(()=>{
-
+            enqueueSnackbar("Cadastrado com sucesso!",{variant:"success", anchorOrigin:{vertical:'top',horizontal:'right'}})
             navi('/login')
         }).catch((error)=>{
+            enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
             console.log(error.response.data.mensagem)
         })
     }

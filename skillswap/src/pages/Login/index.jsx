@@ -5,6 +5,7 @@ import { InputSenha } from '../../components/InputSenha';
 import skillswaploginIMG from '../../assets/img/skillswaplogincadastro.jpeg'
 import { LoginContext } from '../../contexts/LoginContext';
 import { Link } from 'react-router-dom';
+import { InputLogin } from '../../components/InputLogin';
 
 export const Login = () => {
     const { verificarLogin} = useContext(LoginContext);
@@ -15,7 +16,6 @@ export const Login = () => {
     useEffect(()=> {
         if(localStorage.getItem('gravarSenha')){
             var salvos = JSON.parse(localStorage.getItem('gravarSenha'))
-            // console.log(salvos.senha)
             setLogin(salvos.login)
             setSenha(salvos.senha)
             setGravarSenha(true)
@@ -44,19 +44,8 @@ export const Login = () => {
                 <div id='containerFormularioLogin'>
                     <div id='containerInputs'>
                         <p id='tituloLogin'>LOGIN</p>
-                        <div style={{display: 'flex',flexDirection: 'column', position: 'relative', width: "85%", marginTop: "10px"}}>
-                            <GiCrownedSkull 
-                                style={{ 
-                                    width: '40px', 
-                                    position: 'absolute', 
-                                    left: '-6px', 
-                                    top: '7%', 
-                                    color: 'gray',
-                                    fontSize: 25
-                                }}
-                            />
-                            <input type="text" placeholder='Login' onChange={(e) => setLogin(e.target.value)} value={login}/>
-                        </div>
+
+                        <InputLogin setLogin={setLogin} login={login} placeholder="Login" style={{marginTop: "10px"}}/>
 
                         <InputSenha setSenha={setSenha} senha={senha} placeholder="Senha"/>
 

@@ -57,3 +57,16 @@ export function adicionarSkillUser(idUser, idSkill, level){
 };
 
 
+//SKILL
+export function obterTodasSkills(){
+    return api.get("/skills")
+};
+
+export function obterTodasSkillsUserNot(userId){
+    return api.get(`/skills/skillsUserNot?userId=${userId}`)
+};
+
+export function obterSkillPorId(id){
+    return api.get(`/skills/${id}`)
+};
+

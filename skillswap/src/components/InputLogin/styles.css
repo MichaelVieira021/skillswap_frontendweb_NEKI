@@ -1,11 +1,11 @@
-#inputSenha2{
+#inputLogin{
     display: flex;
     flex-direction: column;
     width: 85%;
     position: relative;
 }
 
-#inputSenha2 input{
+#inputLogin input{
     border: none;
     outline: none;
     background-color: #261038;
@@ -17,10 +17,10 @@
     width: calc(100% - 28px)
 }
 
-#inputSenha2 input:hover{
+#inputLogin input:hover{
     background-color: #381010;
 }
 
-#inputSenha2 input::placeholder {
+#inputLogin input::placeholder {
     color: rgba(255, 255, 255, 0.301);
 }

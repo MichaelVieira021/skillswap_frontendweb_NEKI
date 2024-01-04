@@ -16,7 +16,6 @@
 
 #containerFormularioCadastroCompleto{
     width: 45%;
-
     height: 55%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.822);
     border-radius: 10px;
@@ -33,10 +32,7 @@
 #containerImagemFormularioCadastro{
     width: 60%;
     min-width: 60%;
-    /* min-width: 33rem; */
     height: 100%;
-    /* background-size: contain; */
-    /* background-size: contain; */
 }
 
 #containerInputs{
@@ -45,12 +41,9 @@
     flex-direction: column;
 }
 
-
-
 #containerImagemFormularioCadastro img{
     width: 100%;
     height: 100%;
-    /* background-size: contain; */
     opacity: 0.9;
     border-radius: 10px 0 0 10px;
     object-fit: cover;
@@ -59,52 +52,18 @@
 #containerFormularioCadastro{
     width: 40%;
     height: 100%;
-    /* padding: 30px; */
     color: rgb(255, 255, 255);
     opacity: 0.9;
-    /* background-image: url('https://th.bing.com/th/id/OIG.p1FncihOQjGUsvYBK5rX?pid=ImgGn'); */
     background-size: contain;
-    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.822); */
-    /* border-radius: 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding-top: ; */
     justify-content: center;
-}
-
-#containerFormularioCadastro input{
-    border: none;
-    outline: none;
-    background-color: #261038;
-    padding-left: 28px;
-    color: rgb(255, 255, 255);
-    height: 30px;
-    font-size: 18px;
-    margin-bottom: 15px;
-    /* width: 92%; */
-    width: calc(100% - 28px)
-    /* border-radius: 6px; */
-    /* box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.822); */
-
-}
-
-#containerFormularioCadastro input:hover{
-    /* border: 1px solid white; */
-    /* background-color: #191038; */
-    background-color: #381010;
-}
-
-#containerFormularioCadastro input::placeholder {
-    color: rgba(255, 255, 255, 0.301);
-    /* font-weight: 600; */
-    /* padding: 6px; */
 }
 
 #containerFormularioCadastro button{
     border: none;
     outline: none;
-    /* width: 70%; */
     width: 180px;
     height: 40px;
     border-radius: 6px;
@@ -123,7 +82,6 @@
 }
 
 #tituloCadastro{
-    /* margin-top: 80px; */
     font-size: 34px;
     font-family: 'fontSkillSwap';
     font-weight: 600;
