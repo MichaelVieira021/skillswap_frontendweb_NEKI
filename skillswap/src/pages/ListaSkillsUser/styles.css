@@ -1,59 +1,43 @@
-
-#buttonAddSkill{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  margin: 20px;
-  width: 95%;
-  height: 40px;
-  font-size: 1.6rem;
+@font-face {
+  font-family: 'fontSkillSwap';
+  src: url('../../assets/fonts/DevilCandle.otf');
 }
 
-#visualizarSkillUserPorId{
-  /* margin-top: 20px; */
+#paginaHomeListSkillUser{
+  background-color: #010216;
   /* width: 100%; */
-  /* margin-left: 20px; */
-  /* margin-right: 20px; */
   display: flex;
-  flex: 1 1 360px;
-  max-width: auto;
+  /* justify-content: center; */
+  height: 100vh;
   flex-direction: column;
-  background-color: #0f0f0f;
-  /* border: 2px solid rgb(0, 0, 0); */
-  box-shadow: 4px 4px 8px rgb(0, 0, 0);
+}
+
+#tituloListaDeSkills{
+  font-size: 46px;
   color: white;
-  font-size: 1.3rem;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 6px;
-  margin: 10px;
-  border-radius: 6px;
+  margin-top: 8rem;
+  /* margin-bottom: 4rem; */
+  font-family: fontSkillSwap;
+  align-items: center;
+  text-align: center;
 }
 
-#visualizarSkillUserPorId img{
-  width: 6rem;
-  height: 6rem;
-  display: block;
-}
-
-#visualizarTodasSkills{
-  /* display: grid; */
+#containerPrincipal{
   display: flex;
-  padding: 0 20px ;
-  /* flex-direction: column; */
-  flex-wrap: wrap;
-  /* max-width: 900px; */
-  /* margin: 0 auto; */
-  /* grid-template-columns: 1fr auto; */
-  /* column-gap: 30px; */
-  /* row-gap: 30px; */
-  max-height: 450px;
-  /* width: auto; */
-  /* height: auto; */
-  /* overflow-y: auto; */
-  /* overflow: scroll; */
-  overflow-y: scroll;
-  /* border-bottom: 1px solid white; */
+  justify-content: space-between;
+  /* background-color: rgb(86, 100, 23); */
+  /* background-color: rgb(27, 20, 39); */
+  background-image: url('../../assets/img/backgroundList.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* filter: grayscale(100%); */
+  align-items: center;
+  width: 100%;
+  margin-top: -1rem;
+  height: 500px;
+  /* height: 58%; */
+  /* width: 100%; */
 }
 
 #imagemMagoNegro{
@@ -61,8 +45,14 @@
   /* max-height: 420px; */
   /* max-width: 420px; */
   /* border-radius: 100%; */
-  min-height: 400px;
-  min-width: 400px;
+  /* height: 500px;
+  width: 500px; */
+  min-height: 500px;
+  min-width: 500px;
+  /* max-height: 500px;
+  max-width: 500px; */
+  /* position: absolute; */
+  /* right: 0px; */
   
   /* object-fit: contain; */
 }
@@ -71,10 +61,92 @@
   height: 100%;
   width: 100%;
   object-fit: contain;
+  transform: scaleX(-1);
+}
+
+#containerListaDeSkillsUser{
+  width: 100%;
+  /* max-width: 142vh; */
+  /* min-width: 142vh; */
+  height: 410px;
+  min-height: 410px;
+  display: flex;
+  margin-left: 2.7rem;
+  margin-right: 2.7rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#buttonAddSkill{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #453E29; */
+  background-color: #4d3a18;
+  box-shadow: 2px 2px 2px rgb(110, 110, 110);
+  border: none;
+  /* font-weight: 600; */
+  text-shadow: 2px 2px 2px #010216;
+  color: rgb(218, 218, 218);
+  /* margin: 20px; */
+  width: 100%;
+  height: 40px;
+  font-size: 1.6rem;
+}
+
+#buttonAddSkill:hover{
+  background-color: #7b1ed3;
+}
+
+#visualizarTodasSkills{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  margin-top: 10px;
+  width: 100%;
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+#visualizarTodasSkills::-webkit-scrollbar {
+  width: 10px;
+}
+
+#visualizarTodasSkills::-webkit-scrollbar-thumb {
+  background-color: #553d1a;
+}
+
+
+
+#visualizarSkillUserPorId{
+  display: flex;
+  flex: 1 1 360px;
+  max-width: 580px;
+  max-height: 80px;
+  flex-direction: column;
+  background-color: #0f0f0f;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 6px;
+  margin: 10px 20px 10px 0;
+  border-radius: 6px;
+}
+
+#visualizarSkillUserPorId label{
+  font-size: 0.8rem;
+  margin-top: 3px;
+}
+
+#visualizarSkillUserPorId img{
+  width: 4.5rem;
+  height: 4.5rem;
+  display: block;
 }
 
 #boxSkillUserLvl{
   display: flex;
+  /* position: relative; */
   /* flex-direction: column; */
 }
 
@@ -82,21 +154,76 @@
   #imagemMagoNegro{
     display: none;
   }
+
+  #containerListaDeSkillsUser{
+    margin-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1575px){
+  #containerListaDeSkillsUser{
+    margin-left: 3.3rem;
+    margin-right: 3.3rem;
+  }
+}
+
+@media (min-width: 1420px){
+  #containerListaDeSkillsUser{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+}
+
+@media (max-width: 846px){
+
+  #visualizarSkillUserPorId{
+    max-width: 700px;
+    width: auto;
+  }
+
+  /* #visualizarSkillUserPorId{
+    margin: 10px 2px 10px 0;
+  } */
+}
+
+@media (max-width: 466px){
+  #containerListaDeSkillsUser{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 406px){
+  #visualizarSkillUserPorId{
+    margin: 10px 4px 10px 0;
+  }
 }
 
 
-#containerTamanhoFont {
+#containerLevel {
   display: flex;
-  align-items: end;
-  width: 100%;
-  justify-content: space-between;
-  color: tomato;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  /* color: tomato; */
+  /* background-color: #161616; */
+  /* padding: 4px; */
+}
+
+#containerLevel p{
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
 }
 
 #tamanhoFontBox {
   display: flex;
   align-items: center;
-  width: 90px;
+  width: 80px;
   /* margin-right: 3%; */
   /* border: 1px solid tomato; */
   /* border-radius: 5px; */
@@ -104,8 +231,8 @@
 
 .botao-diminuir,
 .botao-aumentar {
-  width: 30%;
-  font-size: 28px;
+  width: 20px;
+  font-size: 1rem;
   cursor: pointer;
   background-color: #3c175f;
   /* border-radius: 100%; */
@@ -127,6 +254,6 @@
 }
 
 #tamanho {
-  font-size: 24px;
+  font-size: 1rem;
   margin: 0 10px;
 }

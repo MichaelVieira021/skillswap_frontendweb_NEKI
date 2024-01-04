@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'fontSkillSwap';
+    src: url('../../assets/fonts/DevilCandle.otf');
+  }
+
 #containerNavBar {
     width: 100%;
     height: 85px;
@@ -8,6 +13,8 @@
     /* margin-bottom: 45px; */
     /* border-bottom: 1px solid white; */
     box-shadow: 0px 2px 23px rgb(71, 71, 71);
+    position: absolute;
+    top: 0;
 }
 
 #containerLogoeNome{
@@ -31,9 +38,10 @@
 
 #containerLogoeNome p{
     color: white;
-    font-size: 1.9rem;
+    font-size: 44px;
     font-weight: 400; 
-    letter-spacing: -1px
+    letter-spacing: -1px;
+    font-family: fontSkillSwap;
 }
 
 #containerNavBar nav{
@@ -53,11 +61,15 @@
     cursor: pointer
 }
 
-@media screen and (max-width: 820px) {
-    #tituloDefsaCivil {
-      display: none;
+@media (max-width: 406px){
+    #containerLogoeNome div{
+        display: none;
     }
-}
+
+    #containerLogoeNome{
+        margin-left: 20px;
+    }
+  }
 
 /* .opcaoNav{
     display: flex; 

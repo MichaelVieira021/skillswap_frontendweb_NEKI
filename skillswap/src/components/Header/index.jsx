@@ -28,7 +28,7 @@ export const Header = () => {
                     {/* <li onClick={() => navi('/')}>Conta</li> */}
                     <li onClick={() => deslogar()} style={{display: "flex"}}> 
                         {/* <p style={{marginRight: "6px"}}>Sair</p> */}
-                        <ImExit />
+                        <ImExit style={{fontSize: "36px"}}/>
                     </li>
                 </ul>
             </nav>
