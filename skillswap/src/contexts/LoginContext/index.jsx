@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import {cadastrarNovoUsuario, configurarToken, verificarToken, verificarUsuario } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ export const LoginContext = createContext({})
 
 export const LoginProvider = ({children}) => {
     const {enqueueSnackbar} = useSnackbar()
+    const [authenticated, setAuthenticated] = useState(false);
     const navi = useNavigate()
 
     useEffect(() => {
@@ -19,11 +20,13 @@ export const LoginProvider = ({children}) => {
                 verificarToken(storedToken).then((response)=>{
                     if(response.data === "Token válido"){
                         configurarToken(storedToken);
-                        navi('/home');
+                        console.log("to aqui")
+                        setAuthenticated(true)
+                        // navi('/home');
                     }else{
                         localStorage.removeItem('token');
                         localStorage.removeItem('user');
-                        navi('/login');
+                        // navi('/login');
                     }
                 }).catch((error)=>{
                     console.log(error.response.data.mensagem)
@@ -32,7 +35,7 @@ export const LoginProvider = ({children}) => {
             }else{
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
-                navi('/login');
+                // navi('/login');
             }
         };
         checkToken();
@@ -51,6 +54,7 @@ export const LoginProvider = ({children}) => {
                 localStorage.removeItem('gravarSenha')
             }
             enqueueSnackbar("Login efetuado com sucesso!",{variant:"success", anchorOrigin:{vertical:'top',horizontal:'right'}})
+            setAuthenticated(true)
             navi('/home')
         }).catch((error) => {
             enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
@@ -73,7 +77,8 @@ export const LoginProvider = ({children}) => {
     return (
         <LoginContext.Provider value={{
             verificarLogin,
-            cadastrarUsuario
+            cadastrarUsuario,
+            authenticated
         }}>{children} 
         </LoginContext.Provider>
     )

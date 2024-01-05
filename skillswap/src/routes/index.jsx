@@ -1,19 +1,29 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Login } from '../pages/Login';
 import { Cadastro } from '../pages/Cadastro';
 import { SkillsUser } from '../pages/ListaSkillsUser';
+import { LoginProvider } from '../contexts/LoginContext';
+import { SnackbarProvider } from 'notistack';
+import { PrivateRoute } from './privateRoute';
+import { PublicRoute } from './publicRoute';
+import { PageNotFound } from '../pages/NotFound';
 
-function AppRouter() {
-
+const AppRouter = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/Login" element={<Login />}/>
-        <Route path="/Cadastro" element={<Cadastro />}/>
-        <Route path="/home" element={<SkillsUser />}/>
-      </Routes>
-    </div>
-  );
-}
+    <BrowserRouter>
+      <SnackbarProvider maxSnack={3} autoHideDuration={2000}>
+        <LoginProvider>
+          <Routes>
+            <Route path="/Login" element={<PublicRoute><Login /></PublicRoute>}/>
+            <Route path="/Cadastro" element={<PublicRoute><Cadastro /></PublicRoute>}/>
+            <Route path="/home" element={<PrivateRoute><SkillsUser /></PrivateRoute>}/> 
+            <Route path='*' element={<PageNotFound />}/>
+          </Routes>
+        </LoginProvider>
+      </SnackbarProvider>
+    </BrowserRouter> 
+  )
+};
+
 export default AppRouter;

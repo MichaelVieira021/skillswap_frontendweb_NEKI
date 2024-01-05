@@ -123,7 +123,7 @@ export function SkillsUser() {
             ))}
           </div>
 
-          <button id='buttonAddSkill' onClick={obterListaSkills}>ADICIONAR NOVA SKILL</button>
+          <Button id='buttonAddSkill' variant="contained" onClick={obterListaSkills}>ADICIONAR NOVA SKILL</Button>
 
           <Modal open={modalShop}>
             <Box id='ModalObterSkill'>
