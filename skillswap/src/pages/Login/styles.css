@@ -62,26 +62,6 @@
     justify-content: center;
 }
 
-#containerFormularioLogin input{
-    border: none;
-    outline: none;
-    background-color: #261038;
-    padding-left: 28px;
-    color: rgb(255, 255, 255);
-    height: 30px;
-    font-size: 18px;
-    margin-bottom: 15px;
-    width: calc(100% - 28px)
-}
-
-#containerFormularioLogin input:hover{
-    background-color: #381010;
-}
-
-#containerFormularioLogin input::placeholder {
-    color: rgba(255, 255, 255, 0.301);
-}
-
 #containerFormularioLogin button{
     border: none;
     outline: none;
@@ -110,7 +90,6 @@
 
 #gravadorDeSenha{
     display: flex;
-    align-items: center;
     justify-content: flex-start;
     margin-right: 6.5rem;
 }

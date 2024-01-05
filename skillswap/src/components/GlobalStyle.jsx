@@ -8,5 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
 & a {
     text-decoration: none;
+    color: #539eff;
+    /* color: #bb5ebb; */
 }
 `

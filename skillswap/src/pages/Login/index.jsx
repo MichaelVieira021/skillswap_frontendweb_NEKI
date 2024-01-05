@@ -1,11 +1,12 @@
 import './styles.css'
 import { useContext, useEffect, useState } from 'react'
-import { GiCrownedSkull } from "react-icons/gi";
 import { InputSenha } from '../../components/InputSenha';
 import skillswaploginIMG from '../../assets/img/skillswaplogincadastro.jpeg'
 import { LoginContext } from '../../contexts/LoginContext';
 import { Link } from 'react-router-dom';
 import { InputLogin } from '../../components/InputLogin';
+import Checkbox from '@mui/material/Checkbox';
+import {  purple } from '@mui/material/colors';
 
 export const Login = () => {
     const { verificarLogin} = useContext(LoginContext);
@@ -50,22 +51,23 @@ export const Login = () => {
                         <InputSenha setSenha={setSenha} senha={senha} placeholder="Senha"/>
 
                         <div id='gravadorDeSenha'>
-                                            
-                            <input
+                            <Checkbox color="secondary" 
                                 style={{width: "12px", height: "12px", marginRight: "5px"}}
-                                type="checkbox"
-                                checked={gravarSenha}
-                                onChange={() => gravarLimparSenhaStorage()}
+                                sx={{
+                                    color: purple[800],
+                                    '&.Mui-checked': {
+                                    color: purple[600],
+                                    }
+                                }}
+                                checked={gravarSenha} size="small" onClick={() => gravarLimparSenhaStorage()} 
                             />
                             <p>Gravar senha</p>
                         </div>
-
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: "100%"}}>
                     <button onClick={()=> verificarLogin(login, senha, gravarSenha)}>ENTRAR</button>
                     <p>Não possui conta?  <Link to={"/Cadastro"}> Cadastre-se</Link></p>
                     </div>
-
                 </div>
 
             </div>
