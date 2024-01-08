@@ -15,6 +15,7 @@ const AppRouter = () => {
       <SnackbarProvider maxSnack={3} autoHideDuration={2000}>
         <LoginProvider>
           <Routes>
+          <Route path="/" element={<PrivateRoute><SkillsUser /></PrivateRoute>}/> 
             <Route path="/Login" element={<PublicRoute><Login /></PublicRoute>}/>
             <Route path="/Cadastro" element={<PublicRoute><Cadastro /></PublicRoute>}/>
             <Route path="/home" element={<PrivateRoute><SkillsUser /></PrivateRoute>}/> 
