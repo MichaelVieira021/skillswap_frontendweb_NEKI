@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: 'http://localhost:8080/api'
+    baseURL: 'http://10.0.0.114:8080/api'
 })
 
 //CONFIG TOKEN
@@ -25,7 +25,7 @@ export function verificarUsuario(login, senha){
 };
 
 export function cadastrarNovoUsuario(login, senha){
-    return api.post("/usuarios", {login, senha})
+    return api.post("/usuarios/cadastrar", {login, senha})
 };
 
 

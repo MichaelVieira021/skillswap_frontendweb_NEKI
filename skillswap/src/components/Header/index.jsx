@@ -12,9 +12,13 @@ export const Header = () => {
         navi('/login')
     }
 
+    const handleLogoClick = () => {
+        window.open('https://www.linkedin.com/in/michaelvieira021/', '_blank');
+      };
+
     return (
         <div id="containerNavBar">
-            <div id="containerLogoeNome" onClick={() => navi('/home')}>
+            <div id="containerLogoeNome" onClick={() => handleLogoClick()}>
                 <div>
                     <img src={logo2} />
                 </div>
@@ -23,11 +27,7 @@ export const Header = () => {
 
             <nav>
                 <ul>
-                    {/* <li>Sobre Projeto</li> */}
-                    {/* <li onClick={() => navi('/')}>Mercado Negro</li> */}
-                    {/* <li onClick={() => navi('/')}>Conta</li> */}
                     <li onClick={() => deslogar()} style={{display: "flex"}}> 
-                        {/* <p style={{marginRight: "6px"}}>Sair</p> */}
                         <ImExit style={{fontSize: "36px"}}/>
                     </li>
                 </ul>

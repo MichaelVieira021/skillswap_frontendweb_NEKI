@@ -1,7 +1,8 @@
 import './styles.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { 
   adicionarSkillUser, 
+  configurarToken, 
   delUserSkill, 
   levelDown, 
   levelUp,
@@ -28,22 +29,25 @@ export function SkillsUser() {
   const [skillSelecionada, setSkillSelecionada] = useState({})
   const { enqueueSnackbar } = useSnackbar()
 
-  useEffect(() => { buscarSkill() }, [])
   useEffect(() => {}, [skillSelecionada])
+  useEffect(() => {buscarSkill()},[])
 
   useEffect(() => {
     if (levelSkillObter > 20) {
       setLevelSkillObter(20)
     }
     if (levelSkillObter < 1) {
-      setLevelSkillObter(1)
+      setLevelSkillObter(1) 
     }
-  }, [levelSkillObter])
+  }, [levelSkillObter]) 
 
   const buscarSkill = () => {
+    configurarToken(localStorage.getItem('token'));
     skillsUser(user.id).then((response) => {
+      
       setData(response.data)
     }).catch((e) => {
+      console.log("aqui ?")
       enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
     })
   }
@@ -105,6 +109,7 @@ export function SkillsUser() {
 
     <div id='paginaHomeListSkillUser'>
       <Header />
+      
       <p id='tituloListaDeSkills'>HABILIDADES</p>
 
       <div id='containerPrincipal'>
@@ -122,7 +127,7 @@ export function SkillsUser() {
               />
             ))}
           </div>
-
+          
           <Button id='buttonAddSkill' variant="contained" onClick={obterListaSkills}>ADICIONAR NOVA SKILL</Button>
 
           <Modal open={modalShop}>
@@ -156,9 +161,9 @@ export function SkillsUser() {
 
               <CardSkill skill={skillSelecionada}/>
 
-              <div style={{ display: 'flex', justifyContent: 'space-around', width: "100%" }}>
-                <Button variant="contained" onClick={adquidrirSkill} size="large" startIcon={<BookmarksIcon color="action" sx={{ fontSize: "80px" }} />}>Adiquirir SKILL</Button>
-                <Button variant="contained" endIcon={<CancelIcon />} size="large" color="error" onClick={() => setModalShop(false)}>Cancelar</Button>
+              <div style={{ justifyContent: 'space-between', width: "100%"}}>
+                <Button variant="contained" onClick={adquidrirSkill} size="large" style={{backgroundColor: 'green', width: '49%', marginRight: 5}}>Salvar</Button>
+                <Button variant="contained" size="large" color="error" style={{ width: '49%'}}onClick={() => {setModalShop(false), setLevelSkillObter(1)}}>Cancelar</Button>
               </div>
 
             </Box>

@@ -1,45 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { createContext } from 'react';
 import {cadastrarNovoUsuario, configurarToken, verificarToken, verificarUsuario } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
-
 export const LoginContext = createContext({})
 
 export const LoginProvider = ({children}) => {
     const {enqueueSnackbar} = useSnackbar()
-    const [authenticated, setAuthenticated] = useState(false);
     const navi = useNavigate()
 
-    useEffect(() => {
-        const checkToken = () => {
-            if(localStorage.getItem('token') && localStorage.getItem('user')){
-                const storedToken = localStorage.getItem('token');
+    useEffect(() => {checkToken();}, []);
 
-                verificarToken(storedToken).then((response)=>{
-                    if(response.data === "Token válido"){
-                        configurarToken(storedToken);
-                        console.log("to aqui")
-                        setAuthenticated(true)
-                        // navi('/home');
-                    }else{
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('user');
-                        // navi('/login');
-                    }
-                }).catch((error)=>{
-                    console.log(error.response.data.mensagem)
-                })
+    const checkToken = () => {
+        if(localStorage.getItem('token') && localStorage.getItem('user')){
+            const storedToken = localStorage.getItem('token');
 
-            }else{
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
-                // navi('/login');
-            }
-        };
-        checkToken();
-    }, []);
+            verificarToken(storedToken).then((response)=>{
+                if(response.data === "Token válido"){
+                    configurarToken(storedToken);
+                }else{
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                }
+            }).catch((error)=>{
+                console.log("oioioi")
+                enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
+            })
+
+        }else{
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        }
+    };
     
     function verificarLogin(login, senha, gravarSenha) {
         verificarUsuario(login, senha).then((response) => {
@@ -54,11 +47,9 @@ export const LoginProvider = ({children}) => {
                 localStorage.removeItem('gravarSenha')
             }
             enqueueSnackbar("Login efetuado com sucesso!",{variant:"success", anchorOrigin:{vertical:'top',horizontal:'right'}})
-            setAuthenticated(true)
             navi('/home')
         }).catch((error) => {
             enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
-            console.log(error.response.data.mensagem)
         })
     }
 
@@ -69,16 +60,14 @@ export const LoginProvider = ({children}) => {
             navi('/login')
         }).catch((error)=>{
             enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
-            console.log(error.response.data.mensagem)
         })
     }
-
 
     return (
         <LoginContext.Provider value={{
             verificarLogin,
             cadastrarUsuario,
-            authenticated
+            checkToken
         }}>{children} 
         </LoginContext.Provider>
     )
